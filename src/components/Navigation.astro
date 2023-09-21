@@ -1,5 +1,5 @@
 ---
-
+import "../styles/global.scss";
 ---
 
 <style>
@@ -7,6 +7,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 980px;
+    margin: auto;
+    font-size: 1.25rem;
+    font-weight: 500;
   }
 
   a + a {
@@ -16,54 +20,47 @@
 
 <nav>
   <div>
-    <a href="/">Home</a>
-    <a href="/blog/">Blog</a>
-    <a href="/about">About</a>
+    <a href="/">My Blog</a>
+    <!-- <a href="/blog/">Blog</a>
+    <a href="/about">About</a> -->
   </div>
-  <button role="button" class="theme-switch">Switch</button>
-  <!-- <svg
-    class="sun-and-moon"
-    aria-hidden="true"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-  >
-    <circle
-      class="sun"
-      cx="12"
-      cy="12"
-      r="6"
-      mask="url(#moon-mask)"
-      fill="currentColor"></circle>
-    <g class="sun-beams" stroke="currentColor">
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </g>
-  </svg>
-  <svg
-    class="sun-and-moon"
-    aria-hidden="true"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-  >
-    <circle
-      class="sun"
-      cx="12"
-      cy="12"
-      r="6"
-      mask="url(#moon-mask)"
-      fill="currentColor"></circle>
-    <g class="sun-beams" stroke="currentColor"> …</g>
-    <mask class="moon" id="moon-mask">
-      <rect x="0" y="0" width="100%" height="100%" fill="white"></rect>
-      <circle cx="24" cy="10" r="6" fill="black"></circle>
-    </mask>
-  </svg> -->
+  <!-- <button role="button" class="theme-switch">Switch</button> -->
 </nav>
+
+<script is:inline>
+// get the user's preferred theme
+const getPreferredTheme = () => {
+  const browserPreference = localStorage?.getItem("theme");
+  if (browserPreference) {
+    return browserPreference;
+  }
+
+  const osTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const hasPreference = typeof osTheme.matches === "boolean";
+  if (hasPreference) {
+    return osTheme.matches ? "dark" : "light";
+  }
+
+  return "light";
+};
+
+// Set the initial theme
+const initialThemeClass = getPreferredTheme();
+document.documentElement.classList.add(initialThemeClass);
+</script>
+
+<script>
+  // toggle the theme
+  const toggleTheme = () => {
+    const element = document.documentElement;
+    const currentTheme = element.classList.contains("light") ? "light" : "dark";
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    element.classList.replace(currentTheme, newTheme);
+    localStorage.setItem("theme", newTheme);
+    console.log({ currentTheme, newTheme });
+  };
+
+  // Attach click event to the theme switch button
+  const button = document.querySelector(".theme-switch");
+  button?.addEventListener("click", toggleTheme);
+</script>

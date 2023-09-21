@@ -1,22 +1,37 @@
+@import "./variables.scss";
+
 * {
   box-sizing: border-box;
   margin: 0px;
-  line-height: calc(1em + 0.725rem);
-  -webkit-font-smoothing: antialiased;
 }
 
 body {
   padding: 0;
-  color: var(--text);
-  background-color: var(--bg);
-  font-family: sans-serif;
+  line-height: calc(1em + 1rem);
+  font-family: "Inter", sans-serif;
   width: 100%;
-  padding: 1rem 3rem;
-  transition: background 350ms ease-in-out, color 500ms ease-in-out;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 
   a {
     color: currentColor;
     text-decoration: unset;
+  }
+
+  h1,
+  h2 {
+    margin-block: 3rem 1rem;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block: 1.5rem 0.5rem;
+  }
+
+  p {
+    font-size: 1.25rem;
   }
 
   ul {
@@ -28,32 +43,12 @@ body {
   button {
     cursor: pointer;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 6px;
     padding-inline: 1.5rem;
     height: 2.5rem;
     background-color: var(--primary);
-    color: var(--grey0);
-    font-weight: 600;
+    color: var(--grey4);
+    font-weight: 500;
+    font-size: 1rem;
   }
-}
-
-:root {
-  /* --primary1: rgb(14, 165, 233); */
-  --primary: rgb(56, 189, 248);
-  --secondary: rgb(99, 102, 241);
-  --grey0: rgb(255, 255, 255);
-  --grey1: rgb(203, 213, 225);
-  --grey2: rgb(148, 163, 184);
-  --grey3: rgb(30, 41, 59);
-  --grey4: rgb(15, 23, 42);
-}
-
-.dark {
-  --text: var(--grey0);
-  --bg: var(--grey4);
-}
-
-.light {
-  --text: var(--grey4);
-  --bg: var(--grey0);
 }

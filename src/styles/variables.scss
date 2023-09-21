@@ -1,0 +1,25 @@
+html {
+  /* --primary1: rgb(14, 165, 233); */
+  --primary: #38bdf8;
+  --secondary: #6366f1;
+  --grey0: #ffffff;
+  --grey1: #cbd5e1;
+  --grey2: #94a3b8;
+  --grey3: #1e293b;
+  --grey4: #0f172a;
+  --accent: #d41e6d;
+}
+
+html {
+  background-color: var(--grey0);
+  color: var(--grey4);
+  --bg: var(--grey0);
+  --text: var(--grey4);
+}
+
+html.dark {
+  background-color: var(--grey4);
+  color: var(--grey0);
+  --bg: var(--grey4);
+  --text: var(--grey0);
+}

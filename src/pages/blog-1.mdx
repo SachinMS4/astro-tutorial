@@ -1,0 +1,49 @@
+---
+title: "Snip Snap Content"
+description: "I have documented some of cases that stumble upon which reuires uncommon solution."
+createdDate: "September 21, 2023; 8:50 PM"
+updatedDate: ""
+---
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogLayout from "../layouts/BlogLayout.astro";
+
+export const components = {
+  a: BlogLayout,
+};
+
+<BaseLayout>
+
+## 1. Limit number of lines displayed.
+
+If you come across a situation where you have to limit the number of text lines displayed, then you can achive that with the below code.
+it also adds text elipsis at the end. Trick is to use old display properties. [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp)
+
+```
+  display: -webkit-box;         // it's an old flex box style
+  -webkit-box-orient: vertical; // similar to flex-direction: column;
+  -webkit-line-clamp: 3         // specify number of line as limit
+  overflow: hidden;             // hide lines after line #3
+```
+
+Gotcha: This code is no longer recommended. [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-orient) docs say's it is being deprecated.
+
+tags: CSS
+
+## 2. Flatten array of arrays to one-dimensional array.
+
+Let's say you have an array like `[1,[2,3],[4,5],6]` and would like to transform it into `[1,2,3,4,5,6]`. For this you can use JavaScript's `flatMap()` Array method.
+
+### How flatMap() works?
+
+Similar to other Array methods like map() and filter(), it uses callback function to iterate over each item in the array and outputs a flattened array. Same can be also achived by applying map() and flat() methods subsequently. But flatMap() is more effecient as it does this in one iteration.
+
+Gotcha: It only flattens the input array by one level.
+
+tags: JavaScript
+
+<button>Upvote</button>
+<button>Downvote</button>
+<button>Share</button>
+
+</BaseLayout>

@@ -1,58 +1,9 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.scss";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>My Blog</title>
-  </head>
-
-  <body>
-    <script is:inline>
-      // get the user's preferred theme
-      const getPreferredTheme = () => {
-        const browserPreference = localStorage?.getItem("theme");
-        if (browserPreference) {
-          return browserPreference;
-        }
-
-        const osTheme = window.matchMedia("(prefers-color-scheme: dark)");
-        const hasPreference = typeof osTheme.matches === "boolean";
-        if (hasPreference) {
-          return osTheme.matches ? "dark" : "light";
-        }
-
-        return "light";
-      };
-
-      // Set the initial theme
-      const initialThemeClass = getPreferredTheme();
-      document.body.classList.add(initialThemeClass);
-    </script>
-
-    <script>
-      // toggle the theme
-      const toggleTheme = () => {
-        const body = document.body;
-        const currentTheme = body.classList.contains("light")
-          ? "light"
-          : "dark";
-        const newTheme = currentTheme === "light" ? "dark" : "light";
-        body.classList.replace(currentTheme, newTheme);
-        localStorage.setItem("theme", newTheme);
-      };
-
-      // Attach click event to the theme switch button
-      const button = document.querySelector(".theme-switch");
-      button?.addEventListener("click", toggleTheme);
-    </script>
-
-    <Header />
-    <h1>My Blog!</h1>
-  </body>
-</html>
+<BaseLayout>
+  <h1>
+    <a href="blog-1"> My Blog!</a>
+  </h1>
+</BaseLayout>

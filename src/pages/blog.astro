@@ -1,8 +1,15 @@
-<a href="/">Home</a>
-<br />
-<a href="/blog/">Blog</a>
-<br />
-<a href="/about">About</a>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
-<h1>My Astro Site</h1>
-<p>This is where I will post about my journey learning Astro.</p>
+<style>
+  .blog-container {
+    font-size: 1.25rem;
+  }
+</style>
+
+<BaseLayout>
+  <section class="blog-container">
+    <p>This is where I will post about my journey learning Astro.</p>
+  </section>
+</BaseLayout>
